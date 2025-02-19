@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>
-                QR CODE GENERATOR
-            </title>
-        <link rel="stylesheet" href="qrgenerator.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR CODE GENERATOR</title>
+    <link rel="stylesheet" href="qrgenerator.css">
+</head>
 
+<body>
     <div class="container">
-        <h2> QR CODE GENERATOR</h2>
-        <input type="text" id="input">
+        <h2>QR CODE GENERATOR</h2>
+        <input type="text" id="input" placeholder="Enter URL">
         <button id="btn">Generate QR Code</button>
         <img src="" id="qr-img">
+
+        <!-- Download Button -->
+
+        <!-- Social Media Sharing Buttons -->
+        <div id="share-buttons" style="display: none;">
+            <button id="download-btn" style="display: none;">Download QR Code</button>
+            <button id="twitter-share">Share on Twitter</button>
+            <button id="facebook-share">Share on Facebook</button>
+            <button id="email-share">Send via Gmail</button>
+        </div>
     </div>
 
     <script src="qrgenerator.js"></script>
+</body>
+
 </html>
