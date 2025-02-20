@@ -64,4 +64,12 @@ button.addEventListener('click', () => {
         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
         window.open(gmailUrl, "_blank");
     };
+
+    const whatsappShare = document.getElementById('whatsapp-share');
+
+    whatsappShare.onclick = () => {
+    const whatsappUrl = `https://wa.me/?text=Check out this QR Code: ${qrimg.src}`;
+    window.open(whatsappUrl, "_blank");
+    };
+
 });
