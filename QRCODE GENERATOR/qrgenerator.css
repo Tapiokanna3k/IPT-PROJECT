@@ -6,25 +6,31 @@
 }
 
 body {
-    background-color: beige;
+    background: radial-gradient(circle at top left, rgba(0, 0, 0, 0.5), transparent 25%),
+                radial-gradient(circle at top right, rgba(0, 0, 0, 0.5), transparent 25%),
+                radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.5), transparent 25%),
+                radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.5), transparent 25%),
+                #EAEAEA; 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    transition: background 2s ease-in-out;
 }
 
 .container {
     border-radius: 10px;
     padding: 20px;
-    width: 400px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    background-color: white;
+    width: 60%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: #FCFCFC;
     text-align: center;
 }
 
 h2 {
     margin-bottom: 10px;
     font-size: 24px;
+    color: #222222;
 }
 
 #input {
