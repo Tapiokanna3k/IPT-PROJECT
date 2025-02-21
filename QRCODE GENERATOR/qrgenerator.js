@@ -1,75 +1,98 @@
-const input = document.getElementById('input'); // Get input field
-const qrimg = document.getElementById('qr-img'); // Get QR image element
-const button = document.getElementById('btn'); // Get Generate button
-const shareButtons = document.getElementById('share-buttons'); // Get share buttons container
-const downloadButton = document.getElementById('download-btn'); // Get Download button
+// Select the input field where users enter the URL
+const input = document.getElementById('input');
 
+// Select the <img> element where the generated QR Code will be displayed
+const qrimg = document.getElementById('qr-img');
+
+// Select the "Generate QR Code" button
+const button = document.getElementById('btn');
+
+// Select the container that holds social media share buttons
+const shareButtons = document.getElementById('share-buttons');
+
+// Select the "Download QR Code" button
+const downloadButton = document.getElementById('download-btn');
+
+// Select individual social media share buttons
 const twitterShare = document.getElementById('twitter-share'); 
 const facebookShare = document.getElementById('facebook-share'); 
 const emailShare = document.getElementById('email-share');
+const whatsappShare = document.getElementById('whatsapp-share');
 
+// Add event listener to the "Generate QR Code" button
 button.addEventListener('click', () => {
-    const inputValue = input.value.trim(); // Get user input and remove extra spaces
+    // Get the user input, removing leading and trailing spaces
+    const inputValue = input.value.trim();
 
+    // If the input field is empty, show an alert and exit function
     if (!inputValue) {
-        alert("Please Enter a Valid URL"); // Show alert if input is empty
+        alert("Please Enter a Valid URL");
         return;
     }
 
-    // Generate QR Code using API
+    // Create the QR Code API URL with user input encoded
     const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(inputValue)}`;
-    qrimg.src = qrCodeUrl;
-    qrimg.alt = `QR Code for ${inputValue}`;
 
-    qrimg.style.display = "block"; // Show QR image only after generation
+    // Set the generated QR Code image URL as the source of the <img> element
+    qrimg.src = qrCodeUrl;
+    qrimg.alt = `QR Code for ${inputValue}`; // Set an alt description for accessibility
+
+    // Display the QR Code image
+    qrimg.style.display = "block";
+
+    // Show the share buttons and the download button
     shareButtons.style.display = "flex";
     downloadButton.style.display = "block";
 
-    // Enable Download Button (Fix: It now directly downloads instead of opening a new tab)
+    // Download functionality for the QR Code image
     downloadButton.onclick = async () => {
         try {
-            const response = await fetch(qrCodeUrl); // Fetch QR Code image
-            const blob = await response.blob(); // Convert to blob format
-            const url = URL.createObjectURL(blob); // Create temporary object URL
+            // Fetch the QR Code image from the API
+            const response = await fetch(qrCodeUrl);
+            // Convert the response into a Blob (binary data)
+            const blob = await response.blob();
+            // Create a temporary URL for the Blob data
+            const url = URL.createObjectURL(blob);
 
-            const a = document.createElement("a"); // Create an anchor tag
+            // Create an invisible anchor (<a>) element for downloading
+            const a = document.createElement("a");
             a.href = url;
-            a.download = "qrcode.png"; // Set filename
-            document.body.appendChild(a);
-            a.click(); // Trigger download
-            document.body.removeChild(a);
+            a.download = "qrcode.png"; // Set the filename for download
+            document.body.appendChild(a); // Append to the document
+            a.click(); // Programmatically trigger the download
+            document.body.removeChild(a); // Remove anchor after download
 
-            URL.revokeObjectURL(url); // Cleanup temporary URL
+            // Release memory by revoking the temporary URL
+            URL.revokeObjectURL(url);
         } catch (error) {
+            // Log any errors encountered during download
             console.error("Error downloading QR Code:", error);
         }
     };
 
-    // Twitter Share (Share QR Code link)
+    // Twitter Share Button - Opens Twitter with the QR Code link in a new tab
     twitterShare.onclick = () => {
         const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(qrCodeUrl)}&text=Check out this QR Code!`;
         window.open(twitterUrl, "_blank");
     };
 
-    // Facebook Share (Share QR Code link)
+    // Facebook Share Button - Opens Facebook share window with QR Code link
     facebookShare.onclick = () => {
         const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(qrCodeUrl)}`;
         window.open(facebookUrl, "_blank");
     };
 
-    // Email Share (Share QR Code link via Gmail)
+    // Email Share Button - Opens Gmail with a prefilled email containing the QR Code link
     emailShare.onclick = () => {
-        const emailSubject = `QR Code for ${inputValue}`;
-        const emailBody = `Here is the QR Code for ${inputValue}:\n${qrCodeUrl}`;
+        const emailSubject = `QR Code for ${inputValue}`; // Email subject
+        const emailBody = `Here is the QR Code for ${inputValue}:\n${qrCodeUrl}`; // Email body content
         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-        window.open(gmailUrl, "_blank");
+        window.open(gmailUrl, "_blank"); // Open Gmail in a new tab
     };
 
-    const whatsappShare = document.getElementById('whatsapp-share');
-
+    // WhatsApp Share Button - Opens WhatsApp with a prefilled message containing the QR Code link
     whatsappShare.onclick = () => {
-    const whatsappUrl = `https://wa.me/?text=Check out this QR Code: ${qrimg.src}`;
-    window.open(whatsappUrl, "_blank");
+        const whatsappUrl = `https://wa.me/?text=Check out this QR Code: ${qrimg.src}`;
+        window.open(whatsappUrl, "_blank");
     };
-
 });
