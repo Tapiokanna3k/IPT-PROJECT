@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="main.css">
+    <script defer src="main.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <div class="circle"></div>
+            <p>IMG LOGO</p>
+        </div>
+        <nav>
+            <button class="nav-button">Dashboard</button>
+            <button class="nav-button">Calendar</button>
+            <button class="nav-button">Notes</button>
+            <button class="nav-button">Schedule</button>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="calendar-container">
+            <div id="calendar"></div>
+        </div>
+        <div class="bottom-section">
+            <div class="notes">
+                <p>Notes:</p>
+                <textarea id="noteInput" placeholder="Write your note..."></textarea>
+                <button id="addNote">Submit</button>
+                <ul id="noteList"></ul>
+            </div>
+            <div class="schedule">
+                <p>Schedule:</p>
+                <textarea placeholder="Write your schedule here..."></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
