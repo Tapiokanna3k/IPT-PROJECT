@@ -70,19 +70,19 @@ button.addEventListener('click', () => {
         }
     };
 
-    // Twitter Share Button - Opens Twitter with the QR Code link in a new tab
+    //  Twitter Public Share Dialog API Button- Opens Twitter with the QR Code link in a new tab
     twitterShare.onclick = () => {
         const twitterUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(qrCodeUrl)}&text=Check out this QR Code!`;
         window.open(twitterUrl, "_blank");
     };
 
-    // Facebook Share Button - Opens Facebook share window with QR Code link
+    // Facebook Public Share Dialog API Button - Opens Facebook share window with QR Code link
     facebookShare.onclick = () => {
         const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(qrCodeUrl)}`;
         window.open(facebookUrl, "_blank");
     };
 
-    // Email Share Button - Opens Gmail with a prefilled email containing the QR Code link
+    // Email Public Share Dialog API Button - Opens Gmail with a prefilled email containing the QR Code link
     emailShare.onclick = () => {
         const emailSubject = `QR Code for ${inputValue}`; // Email subject
         const emailBody = `Here is the QR Code for ${inputValue}:\n${qrCodeUrl}`; // Email body content
@@ -90,7 +90,7 @@ button.addEventListener('click', () => {
         window.open(gmailUrl, "_blank"); // Open Gmail in a new tab
     };
 
-    // WhatsApp Share Button - Opens WhatsApp with a prefilled message containing the QR Code link
+    // WhatsApp Public Share Dialog API Button - Opens WhatsApp with a prefilled message containing the QR Code link
     whatsappShare.onclick = () => {
         const whatsappUrl = `https://wa.me/?text=Check out this QR Code: ${qrimg.src}`;
         window.open(whatsappUrl, "_blank");
