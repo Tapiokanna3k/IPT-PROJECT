@@ -26,7 +26,7 @@ button.addEventListener('click', () => {
 
     // If the input field is empty, show an alert and exit function
     if (!inputValue) {
-        alert("Please Enter a Valid URL");
+        alert("Please Enter a Valid Text or URL");
         return;
     }
 
