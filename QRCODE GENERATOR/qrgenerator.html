@@ -1,7 +1,9 @@
+<!-- HTML Document Declaration -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- Meta Information -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR CODE GENERATOR</title>
@@ -10,15 +12,22 @@
 
 <body>
     <div class="container">
+        <!-- Page Title -->
         <h2>QR CODE GENERATOR</h2>
+        
+        <!-- Input Field for URL or Text -->
         <input type="text" id="input" placeholder="Enter text or URL">
+        
+        <!-- Button to Generate QR Code -->
         <button id="btn">Generate QR Code</button>
+        
+        <!-- Image Element to Display QR Code -->
         <img src="" id="qr-img">
 
-        <!-- Download Button -->
+        <!-- Download Button (Hidden by Default) -->
         <button id="download-btn" style="display: none;">Download QR Code</button>
 
-        <!-- Social Media Sharing Buttons -->
+        <!-- Social Media Sharing Buttons (Hidden by Default) -->
         <div id="share-buttons" style="display: none;">
             <button id="twitter-share">Share on Twitter</button>
             <button id="facebook-share">Share on Facebook</button>
@@ -27,6 +36,7 @@
         </div>
     </div>
 
+    <!-- Link to JavaScript File -->
     <script src="qrgenerator.js"></script>
 </body>
 
